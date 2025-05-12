@@ -1,0 +1,244 @@
+/*service*/
+.services {
+    padding: 100px 10%;
+    background: #1f1f1f;
+    text-align: center;
+}
+
+.services .heading {
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.services .heading span {
+    color: #08b7bd;
+}
+
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.service-box {
+    background: #2a2a2a;
+    padding: 200px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #fcf1f1;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(8, 183, 189, 0.4);
+}
+
+.service-box i {
+    font-size: 50px;
+    color: #08b7bd;
+    margin-bottom: 20px;
+}
+
+.service-box h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #84f84e;
+}
+
+.service-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ccc;
+}
+/*main*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins",sans-serif;
+
+}
+body{
+    background: #1f1f1f;
+    color: #b047da;
+}
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.logo{
+    font-size: 25px;
+    color: #08b7bd;
+    text-decoration:none;
+    font-weight: 600;
+}
+.navbar a {
+    font-size: 18px;
+    color: #84f84e;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: 3s;
+    
+
+}
+.navbar a:hover{
+    color: rgb(233, 85, 16);
+    transition: .3s;
+}
+/*Link icon*/
+.home-sci {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 170px;
+    background: none;
+    display: flex;
+    justify-content: space-between;
+}
+.home-sci a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #00abf0;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #00abf0;
+    text-decoration: none;
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+.home-sci a:hover {
+    color: #081b29;
+    
+}
+.home-sci a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background:#00abf0;
+    z-index: -1;
+    transition: .5s;
+
+
+}
+.home-sci a:hover::before{
+    width: 100%;
+}
+.home-imgHover {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    width: 500px;
+    height: 100%;
+    background: transparent;
+    border: 2x solid red;
+
+}
+/*contact*/
+.contact {
+    padding: 100px 10%;
+    background: #1f1f1f;
+    color: #fff;
+    text-align: center;
+}
+
+.contact .heading {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.contact .heading span {
+    color: #08b7bd;
+}
+
+.contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.input-box {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.input-box input {
+    flex: 1 1 45%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #2a2a2a;
+    color: #fff;
+    font-size: 16px;
+}
+
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #2a2a2a;
+    color: #fff;
+    font-size: 16px;
+    resize: vertical;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 12px 30px;
+    background-color: #08b7bd;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #0ac2c9;
+}
+/*about*/
+.about {
+    padding: 100px 10%;
+    background: #1f1f1f;
+    color: #fff;
+}
+
+.about .heading {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about .heading span {
+    color: #08b7bd;
+}
+
+.about-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #ccc;
+}
