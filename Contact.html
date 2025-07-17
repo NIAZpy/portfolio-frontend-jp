@@ -51,27 +51,64 @@
 <script>
     document.querySelector(".contact-form").addEventListener("submit", async function (e) {
       e.preventDefault();
-  
-      const formData = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        subject: document.getElementById("subject").value,
-        phone: document.getElementById("phone").value,
-        message: document.getElementById("message").value
-      };
-  
+      
+      const submitButton = this.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+      
       try {
-        const res = await fetch("http://localhost:5000/api/contact", {
+        // Disable button and show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = '送信中...';
+        submitButton.style.opacity = '0.7';
+        
+        const formData = {
+          name: document.getElementById("name").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          subject: document.getElementById("subject").value.trim(),
+          phone: document.getElementById("phone").value.trim(),
+          message: document.getElementById("message").value.trim()
+        };
+        
+        // Basic validation
+        if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+          throw new Error('すべての必須項目を入力してください');
+        }
+        
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+          throw new Error('有効なメールアドレスを入力してください');
+        }
+        
+        const response = await fetch("http://localhost:5000/api/contact", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
           body: JSON.stringify(formData)
         });
-        const data = await res.json();
-        alert(data.message || "Message sent successfully!");
-      } catch (err) {
-        alert("Something went wrong. Please try again.");
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(data.error || 'メッセージの送信中にエラーが発生しました');
+        }
+        
+        // Show success message
+        alert(data.message || 'メッセージが送信されました！');
+        
+        // Reset form
+        this.reset();
+        
+      } catch (error) {
+        // Show error message
+        alert(error.message || 'エラーが発生しました。後でもう一度お試しください。');
+        console.error('Error:', error);
+      } finally {
+        // Re-enable button
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+        submitButton.style.opacity = '1';
       }
     });
   </script>
