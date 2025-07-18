@@ -13,10 +13,15 @@
 <body>
   <header class="header">
     <a href="#" class="logo">Niaz.</a>
+    <div class="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav class="navbar">
-      <a href="index.html" class="active">ホーム</a>
-      <a href="About.html" class="active">私について</a>
-      <a href="service.html" class="active">サービス</a>
+      <a href="index.html">ホーム</a>
+      <a href="About.html">私について</a>
+      <a href="service.html">サービス</a>
       <a href="Contact.html" class="active">お問い合わせ</a>
     </nav>
   </header>
@@ -50,6 +55,42 @@
 </html>
 
 <script>
+    // Mobile Menu Toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const navbar = document.querySelector('.navbar');
+    
+    menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        navbar.classList.toggle('active');
+        document.body.style.overflow = menuBtn.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking on a nav link
+    document.querySelectorAll('.navbar a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuBtn.classList.remove('active');
+            navbar.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.navbar') && !e.target.closest('.menu-btn')) {
+            menuBtn.classList.remove('active');
+            navbar.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close menu on window resize if it becomes desktop view
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            menuBtn.classList.remove('active');
+            navbar.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
   document.querySelector(".contact-form").addEventListener("submit", async function (e) {
     e.preventDefault();
 
@@ -79,7 +120,6 @@
       }
 
       const API_BASE_URL = 'https://protfolio-production-b6e7.up.railway.app'; // ✅ Railway backend
-
 
       const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: "POST",
