@@ -78,7 +78,8 @@
         throw new Error('有効なメールアドレスを入力してください');
       }
 
-      const API_BASE_URL = 'https://portfolio-frontend-jbpeyyown-niazs-projects-8bd242e7.vercel.app';
+      const API_BASE_URL = 'https://protfolio-production-b6e7.up.railway.app'; // ✅ Railway backend
+
 
       const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: "POST",
