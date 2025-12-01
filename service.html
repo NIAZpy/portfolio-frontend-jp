@@ -12,6 +12,11 @@
 <body>
     <header class="header">
         <a href="#" class="logo">Niaz.</a>
+        <div class="menu-btn" id="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <nav class="navbar">
             <a href="index.html">ホーム</a>
             <a href="About.html">私について</a>
@@ -19,6 +24,37 @@
             <a href="Contact.html">お問い合わせ</a>
         </nav>
     </header>
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menu-btn');
+            const navbar = document.querySelector('.navbar');
+            
+            if (menuBtn && navbar) {
+                menuBtn.addEventListener('click', function() {
+                    menuBtn.classList.toggle('active');
+                    navbar.classList.toggle('active');
+                });
+                
+                // Close menu when clicking on a link
+                const navLinks = document.querySelectorAll('.navbar a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuBtn.classList.remove('active');
+                        navbar.classList.remove('active');
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!menuBtn.contains(e.target) && !navbar.contains(e.target)) {
+                        menuBtn.classList.remove('active');
+                        navbar.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
 
     <section class="services" id="services">
         <h2 class="heading">私の <span>サービス</span></h2>
@@ -33,13 +69,53 @@
             <!-- Add more services as needed -->
         </div>
     </section>
-    <div class="home-sci">
-        <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank"><i class='bx bxl-gmail'></i></a>
-        <a href="#"><i class='bx bxl-twitter'></i></a>
-        <a href="https://www.linkedin.com/in/niaz-morshed-471305312/" target="_blank"><i class='bx bxl-linkedin'></i></a>
-    </div>
     
-      <span class="home-imgHover"></span>
+    <span class="home-imgHover"></span>
+    
+    <!-- Footer Section -->
+    <footer class="footer">
+       <!-- Social Icons Section -->
+    <div class="home-sci">
+        <!-- Gmail -->
+        <div class="social-item">
+            <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank" class="social-link">
+                <i class='bx bxl-gmail'></i>
+                <span>Gmail</span>
+            </a>
+        </div>
+        
+        <!-- LinkedIn -->
+        <div class="social-item">
+            <a href="https://www.linkedin.com/in/morshed-m-niaz-1ab016389/" target="_blank" class="social-link">
+                <i class='bx bxl-linkedin-square'></i>
+                <span>LinkedIn</span>
+            </a>
+        </div>
+        
+        <!-- GitHub -->
+        <div class="social-item">
+            <a href="https://github.com/NIAZpy" target="_blank" class="social-link">
+                <i class='bx bxl-github'></i>
+                <span>GitHub</span>
+            </a>
+        </div>
+
+        <!-- Resume link -->
+        <div class="social-item">
+            <a href="https://drive.google.com/file/d/1XlqZh0h-OEsB1sXG2RLzMKecGwaA-odF/view?usp=drive_link" target="_blank" class="social-link">
+                <i class='bx bx-file'></i>
+                <span>Resume English</span>
+            </a>
+        </div>
+
+        <div class="social-item">
+            <a href="https://drive.google.com/file/d/1F7Gvsg0OPVdTvJvI9uPLHnPss5voDf2y/view?usp=drive_link" target="_blank" class="social-link">
+                <i class='bx bx-file'></i>
+                <span>履歴書</span>
+            </a>
+        </div>
+    </div>
+    </footer>
 </body>
 
 </html>

@@ -18,20 +18,44 @@
             <a href="service.html">サービス</a>
             <a href="Contact.html">お問い合わせ</a>
         </nav>
+        <div class="menu-btn" id="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
     <section class="home">
         <div class="home-content">
-            <h1>こんにちは私はモシエドエムニアズと申します</h1>
+            <h1><font size="7">こんにちは&nbsp;私は&nbsp;モシエドエム&nbsp;ニアズ&nbsp;と申します</font></h1>
 
-            <imgc="0b0256af0c088cb9305d308064c2686d.png" alt="Girl in a jacket" width="150" height="150">
+            <img src="0b0256af0c088cb9305d308064c2686d.png" alt="Profile picture" width="150" height="150">
 
-            <h3>フルスタック開発者</h3>
+            <h3><font size="7">フルスタック開発者</font></h3>
             <div class="btn-box">
                 <a href="Contact.html">採用をご検討ください</a>
                 <a href="https://mail.google.com/mail/u/0/#inbox">ご相談させていただけますか？</a>
             </div>
         </div>
     
+        <div class="skills">
+            <h2 class="heading">スキルと<span>認証</span></h2>
+            <ul class="skills-list">
+             <li><strong>フロントエンド:</strong> HTML, CSS, JavaScript, React.js,Java</li>
+             <li><strong>バックエンド:</strong> Python, C#, Node.js</li>
+             <li><strong>データベース:</strong> MySQL, MongoDB,prosgrl</li>
+             <li><strong>その他:</strong> REST APIs, フルスタック開発</li>
+             <li><strong>認証:</strong> JLPT N3 – 日本語能力試験</li>
+             <li><strong>認証:</strong> 2025年にJLPT N2を受けたいです</li>
+
+            </ul>
+        </div>
+    
+    
+        <span class="home-imgHover"></span>
+    </section>
+    
+    <!-- Footer Section -->
+    <footer class="footer">
        <!-- Social Icons Section -->
     <div class="home-sci">
         <!-- Gmail -->
@@ -72,24 +96,39 @@
                 <span>履歴書</span>
             </a>
         </div>
-
+    </div>
+    </footer>
     
-        <div class="skills">
-            <h2 class="heading">スキルと<span>認証</span></h2>
-            <ul class="skills-list">
-             <li><strong>フロントエンド:</strong> HTML, CSS, JavaScript, React.js,Java</li>
-             <li><strong>バックエンド:</strong> Python, C#, Node.js</li>
-             <li><strong>データベース:</strong> MySQL, MongoDB,prosgrl</li>
-             <li><strong>その他:</strong> REST APIs, フルスタック開発</li>
-             <li><strong>認証:</strong> JLPT N3 – 日本語能力試験</li>
-             <li><strong>認証:</strong> 2025年にJLPT N2を受けたいです</li>
-
-            </ul>
-        </div>
-    
-        <span class="home-imgHover"></span>
-    </section>
-    
-    
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menu-btn');
+            const navbar = document.querySelector('.navbar');
+            
+            if (menuBtn && navbar) {
+                menuBtn.addEventListener('click', function() {
+                    menuBtn.classList.toggle('active');
+                    navbar.classList.toggle('active');
+                });
+                
+                // Close menu when clicking on a link
+                const navLinks = document.querySelectorAll('.navbar a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuBtn.classList.remove('active');
+                        navbar.classList.remove('active');
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!menuBtn.contains(e.target) && !navbar.contains(e.target)) {
+                        menuBtn.classList.remove('active');
+                        navbar.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

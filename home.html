@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-compatable" content="IE=edge">
-    <meta name="viewport" content="width=device-width,
-    initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NIazポートフォリオ</title>
     <link rel="stylesheet" href="2.css">
     
@@ -15,8 +14,45 @@
     <header class="header">
         <a href="#" class="logo">Niaz.</a>
         <nav class="navbar">
-            <a href="index.html"class="active">ホーム</a>
-            <a href="About.html"class="active">私について</a>
-            <a href="service.html"class="active">サービス</a>
-            <a href="Contact.html"class="active">お問い合わせ</a>
+            <a href="index.html" class="active">ホーム</a>
+            <a href="About.html">私について</a>
+            <a href="service.html">サービス</a>
+            <a href="Contact.html">お問い合わせ</a>
+        </nav>
+        <div class="menu-btn" id="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menu-btn');
+            const navbar = document.querySelector('.navbar');
+            
+            if (menuBtn && navbar) {
+                menuBtn.addEventListener('click', function() {
+                    menuBtn.classList.toggle('active');
+                    navbar.classList.toggle('active');
+                });
+                
+                // Close menu when clicking on a link
+                const navLinks = document.querySelectorAll('.navbar a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuBtn.classList.remove('active');
+                        navbar.classList.remove('active');
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!menuBtn.contains(e.target) && !navbar.contains(e.target)) {
+                        menuBtn.classList.remove('active');
+                        navbar.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
